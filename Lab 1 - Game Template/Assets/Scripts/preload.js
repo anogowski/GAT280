@@ -1,7 +1,7 @@
 var date = new Date();
 var cachedVersion = date.getTime();
 
-manifest = [
+scriptManifest = [
     {
         src : "preloadImages.js?a=" + cachedVersion,
         id  : "preloadImages"
@@ -32,13 +32,11 @@ manifest = [
     }
 ]
 
-var scriptSrc = "Assets/Scripts/";
-
 
 function loadJs(){
     var request = new createjs.LoadQueue(true, scriptSrc);
     request.on("complete", loadJsComplete, this);
-    request.loadManifest(manifest);
+    request.loadManifest(scriptManifest);
 }
 
 function loadJsComplete(evt){

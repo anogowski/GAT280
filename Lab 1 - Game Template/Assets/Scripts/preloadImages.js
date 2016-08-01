@@ -1,7 +1,7 @@
-manifest = [
+imgManifest = [
     {
         src : "TitleScreen.png",
-        id  : "Title"
+        id  : "title"
     },
     {
         src : "GameScreen.png",
@@ -20,23 +20,25 @@ manifest = [
         id  : "levelsign"
     }  
 ]
-
-
-var imgSrc = "Assets/Images/";
-
+//var imgSrc = "Assets/Images/";
+var queue;
+var titleScreen;
 function loadImages(){
-  var queue = new createjs.LoadQueue(true, imgSrc); 
+    queue = new createjs.LoadQueue(true, imgSrc);
     queue.on("complete", loadImgComplete, this);
-    queue.loadManifest(manifest);
+    queue.loadManifest(imgManifest);
 }
 
 function loadImgComplete(evt){
-    titleScreen = new createjs.Bitmap(queue.getResult("title"));
+    titleScreen = new createjs.Bitmap(queue.getResult('title'));    //returns null
+    //titleScreen = new createjs.Bitmap(imgManifest[0].src);        //Works
     backgroundScreen = new createjs.Bitmap(queue.getResult("background"));
     instructionScreen = new createjs.Bitmap(queue.getResult("instructions"));
     gameoverScreen = new createjs.Bitmap(queue.getResult("gameover"));
     levelFrame = new createjs.Bitmap(queue.getResult("levelsign"));
-    titleScreen.visibility = true;
+    
+    stage.addChild(titleScreen);
+    stage.update();
 }
 
 loadImages();

@@ -3,7 +3,8 @@ var CANVAS_HEIGHT = 600;
 var FPS = 30;
 
 var canvas, stage, queue;
-
+var scriptSrc = "Assets/Scripts/";
+var imgSrc = "Assets/Images/";
 
 function setupCanvas() {
     var canvas = document.getElementById('game');

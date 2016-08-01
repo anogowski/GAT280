@@ -1,5 +1,4 @@
-var imgSrc = "Assets/Images/";
-manifest = [
+spriteManifest = [
     {src:"sprites.png", id:"mySprites"},
     {src:"buttons.png", id:"button"}
 ];
@@ -31,7 +30,7 @@ function loadComplete(evt) {
 function loadFiles() {
     queue = new createjs.LoadQueue(true, imgSrc);
     queue.on("complete", loadComplete, this);
-    queue.loadManifest(manifest);
+    queue.loadManifest(spriteManifest);
 }
 
 loadFiles();

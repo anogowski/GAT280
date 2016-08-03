@@ -1,7 +1,7 @@
 var FPS = 30;
 function loop() {
     runGameTimer();
-    //SwitchState();
+    SwitchState();
     stage.update();
 }
 createjs.Ticker.addEventListener("tick", loop);

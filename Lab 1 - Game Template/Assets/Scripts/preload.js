@@ -10,18 +10,18 @@ scriptManifest = [
 //        src : "preloadSprites.js?a=" + cachedVersion,
 //        id  : "preloadSprites"
 //    },
-//    {
-//        src : "gamestate.js?a=" + cachedVersion,
-//        id  : "gamestate"
-//    },
-//    {
-//        src : "gametimer.js?a=" + cachedVersion,
-//        id  : "gametimer"
-//    },
-//    {
-//        src : "gameloop.js?a=" + cachedVersion,
-//        id  : "gameloop"
-//    },
+    {
+        src : "gamestate.js?a=" + cachedVersion,
+        id  : "gamestate"
+    },
+    {
+        src : "gametimer.js?a=" + cachedVersion,
+        id  : "gametimer"
+    },
+    {
+        src : "gameloop.js?a=" + cachedVersion,
+        id  : "gameloop"
+    },
 //    {
 //        src : "button.js?a=" + cachedVersion,
 //        id  : "button"

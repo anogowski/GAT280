@@ -51,6 +51,8 @@ function addBackGroundToStage() {
     gameoverScreen.visible = false;
     
     stage.addChild(levelFrame);
+    levelFrame.x = CANVAS_WIDTH/2;
+    levelFrame.y = CANVAS_HEIGHT/2;
     levelFrame.visible = false;
 }
 
@@ -71,6 +73,7 @@ function addSpritesToStage(){
     walk.y=200;
     walk.gotoAndPlay("walkRight");  //loops through the animation frames (1-12) as defined above
     stage.addChild(walk);
+    walk.visible = false;
 }
 
 loadFiles();

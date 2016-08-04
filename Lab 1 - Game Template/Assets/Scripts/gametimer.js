@@ -18,5 +18,5 @@ function runGameTimer() {
         gameTimer = frameCount / (FPS);
     }
 }
-
+resetGameTimer();
 gameTimerSetup();

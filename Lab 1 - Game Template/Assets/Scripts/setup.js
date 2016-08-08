@@ -12,7 +12,7 @@ function setupCanvas() {
     canvas.height = CANVAS_HEIGHT;
     
     stage = new createjs.Stage(canvas);
-    
+    stage.enableMouseOver();
     stage.update();
     
 }

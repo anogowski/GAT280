@@ -15,7 +15,6 @@ manifest = [
     {src:"Sign.png", id:"levelsign"},
     {src:"sprites.png", id:"mySprites"},
     {src:"buttons.png", id:"button"}
-
 ];
  
  

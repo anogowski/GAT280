@@ -16,7 +16,7 @@ function SwitchState()
                     levelFrame.visible = true;
                     backgroundScreen.visible = true;
                     walk.visible = true;
-                    titleScreen.visble = false;
+                    titleScreen.visible = false;
                     tweenObj();
                     GameState = Menu;
                 console.log("TitleEnd");

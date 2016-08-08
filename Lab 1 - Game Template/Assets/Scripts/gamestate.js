@@ -22,10 +22,7 @@ function SwitchState() {
         break;
 
     case Menu:
-        levelFrame.addEventListener("click", function (event) {
-            levelFrame.visible = false;
-            console.log("MenuEnd");
-        });
+
         break;
 
     case Play:
@@ -38,6 +35,8 @@ function SwitchState() {
             walk.visible = false;
             gameoverScreen.visible = true;
             GameState = GameOver;
+            myText.visible = false;
+            mouseText.visible = false;
             console.log("PlayEnd");
         }
         break;
@@ -60,11 +59,12 @@ function tweenComplete(tween) {
     console.log("Tween Complete!");
     myText.visible = true;
     mouseText.visible = true;
+    levelFrame.visible = false;
     GameState = Play;
 }
 
 function tweenObj() {
-    levelFrame.x = CANVAS_WIDTH / 2;
+    levelFrame.x = CANVAS_WIDTH / 2 - 100;
     levelFrame.y = -200;
 
     myTween = createjs.Tween.get(levelFrame, {
@@ -72,8 +72,8 @@ function tweenObj() {
         })
         .wait(500)
         .to({
-            x: CANVAS_WIDTH / 2,
-            y: CANVAS_HEIGHT / 2,
+            x: CANVAS_WIDTH / 2 - 100,
+            y: CANVAS_HEIGHT / 2 - 75,
             rotation: 0
         }, 1500, createjs.Ease.bounceOut)
         .wait(2000)

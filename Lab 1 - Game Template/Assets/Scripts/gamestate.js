@@ -29,7 +29,7 @@ function SwitchState() {
         runGameTimer();
         console.log(gameTimer);
         myText.text = gameTimer;
-        mouseText.Text = "x: " + mouseX + " y: " + mouseY;
+        mouseText.text = "x: " + mouseX + " y: " + mouseY;
         if (gameTimer > 10) {
             backgroundScreen.visible = false;
             walk.visible = false;

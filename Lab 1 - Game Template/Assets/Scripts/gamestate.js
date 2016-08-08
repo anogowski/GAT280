@@ -17,6 +17,7 @@ function SwitchState()
                     backgroundScreen.visible = true;
                     walk.visible = true;
                     titleScreen.visble = false;
+                    tweenObj();
                     GameState = Menu;
                 console.log("TitleEnd");
                 });
@@ -54,3 +55,18 @@ function SwitchState()
         }
 }
 
+var myTween;
+ 
+function tweenComplete(tween) {
+    console.log("Tween Complete!");
+}
+ 
+function tweenObj() {
+    myTween = createjs.Tween.get(levelFrame,{loop:false})
+        .wait(500)
+        .to({x:200, y:200, rotation:0}, 1500, createjs.Ease.bounceOut)
+        .wait(2000)
+        .to({y:400, rotation:0}, 1000, createjs.Ease.backIn)
+        .call(tweenComplete);
+ 
+}

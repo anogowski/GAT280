@@ -5,7 +5,8 @@ var backgroundScreen;
 var instructionScreen;
 var gameoverScreen;
 var levelFrame;
-
+var menuX;
+var menuY;
 manifest = [
     {src:"TitleScreen.png", id:"title"},
     {src:"GameScreen.png", id:"background"},
@@ -51,8 +52,10 @@ function addBackGroundToStage() {
     gameoverScreen.visible = false;
     
     stage.addChild(levelFrame);
-    levelFrame.x = CANVAS_WIDTH/2;
-    levelFrame.y = CANVAS_HEIGHT/2;
+    menuX = (CANVAS_WIDTH/2);
+    menuY = (CANVAS_HEIGHT/2);
+    levelFrame.x = menuX;
+    levelFrame.y = menuY;
     levelFrame.visible = false;
 }
 

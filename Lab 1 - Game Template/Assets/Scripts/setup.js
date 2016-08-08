@@ -10,11 +10,11 @@ function setupCanvas() {
     var canvas = document.getElementById('game');
     canvas.width = CANVAS_WIDTH;
     canvas.height = CANVAS_HEIGHT;
-    
+
     stage = new createjs.Stage(canvas);
     stage.enableMouseOver();
     stage.update();
-    
+
 }
 
 function main() {
@@ -22,7 +22,5 @@ function main() {
     loadJs();
     stage.update();
 }
-
-
 
 main();

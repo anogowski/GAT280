@@ -1,4 +1,5 @@
 var FPS = 30;
+
 function loop() {
     SwitchState();
     //myText.text = gameTimer;

@@ -21,6 +21,10 @@ scriptManifest = [
     {
         src : "keyboard.js?a=" + cachedVersion,
         id  : "keyboard"
+    },
+    {
+        src : "mouse.js?a=" + cachedVersion,
+        id  : "mouse"
     }
 ]
 

@@ -27,14 +27,15 @@ function SwitchState()
                 levelFrame.addEventListener("click", function(event) {
                     GameState = Play; 
                     levelFrame.visible = false;
-
                     console.log("MenuEnd");
                 });
                 break;
                 
             case Play:
+                runGameTimer();
                 console.log(gameTimer);
-                if (gameTimer > 20)
+            
+                if (gameTimer > 10)
                 {
                     backgroundScreen.visible = false;
                     walk.visible = false;
@@ -49,6 +50,7 @@ function SwitchState()
                     gameoverScreen.visible = false;
                     resetGameTimer()
                     GameState = Title;
+                    titleScreen.visible = true;
                     console.log("GameOverEnd");
                 });            
                 break;

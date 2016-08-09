@@ -27,7 +27,6 @@ function SwitchState() {
 
     case Play:
         runGameTimer();
-        console.log(gameTimer);
         myText.text = gameTimer;
         mouseText.text = "x: " + mouseX + " y: " + mouseY;
         if (gameTimer > 10) {

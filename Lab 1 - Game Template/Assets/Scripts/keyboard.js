@@ -2,6 +2,11 @@ var KEYCODE_LEFT = 37;
 var KEYCODE_UP = 38;
 var KEYCODE_RIGHT = 39;
 var KEYCODE_DOWN = 40;
+var KEYCODE_W = 87;
+var KEYCODE_A = 65;
+var KEYCODE_S = 83;
+var KEYCODE_D = 68;
+var KEYCODE_SPACE = 32;
 
 var leftDown = false;
 var upDown = false;
@@ -42,6 +47,36 @@ function handleKeyDown(evt) {
             downDown = !downDown;
         }
         return false;
+    case KEYCODE_W:
+        if (!wDown) {
+            console.log(evt.keyCode + " down");
+            wDown = !wDown;
+        }
+        return false;
+    case KEYCODE_A:
+        if (!aDown) {
+            console.log(evt.keyCode + " down");
+            aDown = !aDown;
+        }
+        return false;
+    case KEYCODE_S:
+        if (!sDown) {
+            console.log(evt.keyCode + " down");
+            sDown = !sDown;
+        }
+        return false;
+    case KEYCODE_D:
+        if (!dDown) {
+            console.log(evt.keyCode + " down");
+            dDown = !dDown;
+        }
+        return false;
+    case KEYCODE_SPACE:
+        if (!spaceDown) {
+            console.log(evt.keyCode + " down");
+            spaceDown = !spaceDown;
+        }
+        return false;
     }
 }
 
@@ -72,6 +107,36 @@ function handleKeyUp(evt) {
         if (downDown) {
             console.log(evt.keyCode + " up");
             downDown = !downDown;
+        }
+        break;
+    case KEYCODE_W:
+        if (wDown) {
+            console.log(evt.keyCode + " up");
+            wDown = !wDown;
+        }
+        break;
+    case KEYCODE_A:
+        if (aDown) {
+            console.log(evt.keyCode + " up");
+            aDown = !aDown;
+        }
+        break;
+    case KEYCODE_S:
+        if (sDown) {
+            console.log(evt.keyCode + " up");
+            sDown = !sDown;
+        }
+        break;
+    case KEYCODE_D:
+        if (dDown) {
+            console.log(evt.keyCode + " up");
+            dDown = !dDown;
+        }
+        break;
+    case KEYCODE_SPACE:
+        if (spaceDown) {
+            console.log(evt.keyCode + " up");
+            spaceDown = !spaceDown;
         }
         break;
     }

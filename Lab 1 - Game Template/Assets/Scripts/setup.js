@@ -5,6 +5,7 @@ var FPS = 30;
 var canvas, stage, queue;
 var scriptSrc = "Assets/Scripts/";
 var imgSrc = "Assets/Images/";
+var audioSrc = "Assets/Audio/";
 
 function setupCanvas() {
     var canvas = document.getElementById('game');

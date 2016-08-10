@@ -1,5 +1,7 @@
 var queue;
 var sprites, walk, buttons;
+var blockArray = [];
+var blockArrayLength = 3;
 var titleScreen;
 var backgroundScreen;
 var instructionScreen;
@@ -106,6 +108,8 @@ function addSpritesToStage() {
     walk.visible = false;
 }
 
+
+
 function addButtonsToStage() {
     var buttonSheet = new createjs.SpriteSheet({
         images: [queue.getResult("button")],
@@ -131,7 +135,19 @@ function addButtonsToStage() {
         }
     });
     buttons = new createjs.Sprite(buttonSheet);
-    stage.addChild(buttons);
+    buttons.x = CANVAS_WIDTH / 2 - 25;
+    buttons.y = CANVAS_HEIGHT / 2;
+
+    for (i = 0; i < blockArrayLength; i++) {
+        buttons.x = CANVAS_WIDTH / 2 - 20;
+        buttons.y = CANVAS_HEIGHT / 2 + i * 50;
+        buttons.gotoAndStop(i * 3);
+        blockArray.push(buttons.clone());
+    }
+
+    for (j = 0; j < blockArrayLength; j++) {
+        stage.addChild(blockArray[j]);
+    }
 }
 
 loadFiles();

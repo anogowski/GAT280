@@ -4,7 +4,8 @@ var Menu = "Menu";
 var Play = "Play";
 var GameOver = "GameOver";
 var Instuctions = "Instructions";
-
+var container;
+var levelText;
 
 var GameState = Setup;
 
@@ -37,6 +38,20 @@ function SwitchState() {
                 bgm.volume = 0;
             }
         });
+
+        container = new createjs.Container();
+        levelText = new createjs.Text(1, "15px Arial", "#FFF");
+        levelText.x = 100;
+        levelText.y = 100;
+        levelFrame.x = 0;
+        levelFrame.y = 0;
+        levelFrame.visible = true;
+        container.addChild(levelFrame, levelText);
+        container.x = CANVAS_WIDTH / 2 - 100;
+        container.y = CANVAS_HEIGHT / 2;
+        container.visible = false;
+        stage.addChild(container);
+
         GameState = Title;
         break;
     case Title:
@@ -67,16 +82,15 @@ function tweenComplete(tween) {
     console.log("Tween Complete!");
     myText.visible = true;
     mouseText.visible = true;
-    levelFrame.visible = false;
+    container.visible = false;
     GameState = Play;
 }
 
 function tweenObj() {
-    levelFrame.visible = true;
-    levelFrame.x = CANVAS_WIDTH / 2 - 100;
-    levelFrame.y = -200;
 
-    myTween = createjs.Tween.get(levelFrame, {
+    container.visible = true;
+    container.y = -200;
+    myTween = createjs.Tween.get(container, {
             loop: false
         })
         .wait(500)
@@ -96,7 +110,7 @@ function tweenObj() {
 
 function MainMenu() {
     titleScreen.visible = true;
-    levelFrame.visible = false;
+    container.visible = false;
     backgroundScreen.visible = false;
     gameoverScreen.visible = false;
     instructionScreen.visible = false;
@@ -114,7 +128,7 @@ function MainMenu() {
 function TitleEnd() {
     titleScreen.visible = false;
     instructionScreen.visible = false;
-    levelFrame.visible = false;
+    container.visible = false;
     backgroundScreen.visible = true;
     gameoverScreen.visible = false;
     walk.visible = true;
@@ -130,7 +144,7 @@ function TitleEnd() {
 function InstructionsStart() {
     titleScreen.visible = false;
     instructionScreen.visible = true;
-    levelFrame.visible = false;
+    container.visible = false;
     backgroundScreen.visible = true;
     gameoverScreen.visible = false;
     walk.visible = false;
@@ -144,7 +158,7 @@ function InstructionsStart() {
 
 function GameOverStart() {
     titleScreen.visible = false;
-    levelFrame.visible = false;
+    container.visible = false;
     backgroundScreen.visible = false;
     gameoverScreen.visible = true;
     instructionScreen.visible = false;

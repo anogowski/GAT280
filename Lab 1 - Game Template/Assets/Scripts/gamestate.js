@@ -25,6 +25,18 @@ function SwitchState() {
 
         blockArray[2].x = CANVAS_WIDTH - 100;
         blockArray[2].y = 5;
+
+        blockArray[3].addEventListener("click", function (event) {
+            if (isMuted) {
+                blockArray[3].gotoAndStop(15);
+                isMuted = !isMuted;
+                bgm.volume = 0.5;
+            } else {
+                blockArray[3].gotoAndStop(16);
+                isMuted = !isMuted;
+                bgm.volume = 0;
+            }
+        });
         GameState = Title;
         break;
     case Title:

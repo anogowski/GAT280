@@ -9,6 +9,7 @@ var gameoverScreen;
 var levelFrame;
 var menuX;
 var menuY;
+var isMuted = false;
 manifest = [
     {
         src: "TitleScreen.png",
@@ -145,7 +146,13 @@ function addButtonsToStage() {
         blockArray.push(buttons.clone());
     }
 
-    for (j = 0; j < blockArrayLength; j++) {
+    buttons.x = 10;
+    buttons.y = CANVAS_HEIGHT - 40;
+    buttons.gotoAndStop(15);
+    blockArray.push(buttons.clone());
+
+
+    for (j = 0; j < blockArray.length; j++) {
         stage.addChild(blockArray[j]);
     }
 }

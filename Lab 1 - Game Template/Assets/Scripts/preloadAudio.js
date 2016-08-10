@@ -1,5 +1,5 @@
 var aduioQueue;
-
+var bgm;
 aduioManifest = [
     {
         src: "rhinoceros.mp3",
@@ -10,10 +10,7 @@ aduioManifest = [
 function loadAudioComplete(evt) {
 
     //play a sound that had been preloaded
-    createjs.Sound.play("bgm");
-
-    //set loop to -1 to make it continuous
-    createjs.Sound.play("music", {
+    bgm = createjs.Sound.play("bgm", {
         loop: -1
     });
 }

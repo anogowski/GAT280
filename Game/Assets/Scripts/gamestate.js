@@ -122,7 +122,6 @@ function MainMenu() {
     gameoverScreen.visible = false;
     instructionScreen.visible = false;
     score.visible = false;
-    walk.visible = false;
     myText.visible = false;
     mouseText.visible = false;
     resetGameTimer()
@@ -140,7 +139,6 @@ function TitleEnd() {
     backgroundScreen.visible = true;
     gameoverScreen.visible = false;
     score.visible = false;
-    walk.visible = true;
     myText.visible = false;
     mouseText.visible = false;
     tweenObj();
@@ -157,7 +155,6 @@ function InstructionsStart() {
     backgroundScreen.visible = true;
     gameoverScreen.visible = false;
     score.visible = false;
-    walk.visible = false;
     myText.visible = false;
     mouseText.visible = false;
     resetGameTimer();
@@ -173,7 +170,6 @@ function GameOverStart() {
     gameoverScreen.visible = true;
     instructionScreen.visible = false;
     score.visible = true;
-    walk.visible = false;
     myText.visible = false;
     mouseText.visible = false;
     resetGameTimer();

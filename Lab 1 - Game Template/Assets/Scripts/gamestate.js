@@ -6,7 +6,7 @@ var GameOver = "GameOver";
 var Instuctions = "Instructions";
 var container;
 var levelText;
-
+var score;
 var GameState = Setup;
 
 
@@ -52,6 +52,11 @@ function SwitchState() {
         container.visible = false;
         stage.addChild(container);
 
+        score = new createjs.Text("Score: " + 100, "15px Arial", "#F00");
+        score.x = 5;
+        score.y = 5;
+        score.visible = false;
+        stage.addChild(score);
         GameState = Title;
         break;
     case Title:
@@ -63,7 +68,7 @@ function SwitchState() {
 
     case Play:
         runGameTimer();
-        myText.text = gameTimer;
+        myText.text = "Time: " + gameTimer;
         mouseText.text = "x: " + mouseX + " y: " + mouseY;
         if (gameTimer > 10) {
             GameOverStart();
@@ -83,6 +88,8 @@ function tweenComplete(tween) {
     myText.visible = true;
     mouseText.visible = true;
     container.visible = false;
+    score.visible = true;
+
     GameState = Play;
 }
 
@@ -114,6 +121,7 @@ function MainMenu() {
     backgroundScreen.visible = false;
     gameoverScreen.visible = false;
     instructionScreen.visible = false;
+    score.visible = false;
     walk.visible = false;
     myText.visible = false;
     mouseText.visible = false;
@@ -131,6 +139,7 @@ function TitleEnd() {
     container.visible = false;
     backgroundScreen.visible = true;
     gameoverScreen.visible = false;
+    score.visible = false;
     walk.visible = true;
     myText.visible = false;
     mouseText.visible = false;
@@ -147,6 +156,7 @@ function InstructionsStart() {
     container.visible = false;
     backgroundScreen.visible = true;
     gameoverScreen.visible = false;
+    score.visible = false;
     walk.visible = false;
     myText.visible = false;
     mouseText.visible = false;
@@ -162,6 +172,7 @@ function GameOverStart() {
     backgroundScreen.visible = false;
     gameoverScreen.visible = true;
     instructionScreen.visible = false;
+    score.visible = true;
     walk.visible = false;
     myText.visible = false;
     mouseText.visible = false;

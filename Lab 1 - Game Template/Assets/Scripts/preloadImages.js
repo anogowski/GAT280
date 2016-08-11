@@ -1,5 +1,5 @@
 var queue;
-var sprites, walk, buttons;
+var sprites, walk, buttons, bat, goblin;
 var blockArray = [];
 var blockArrayLength = 3;
 var titleScreen;
@@ -60,6 +60,8 @@ function loadComplete(evt) {
     addBackGroundToStage();
     addSpritesToStage();
     addButtonsToStage();
+    Enemy();
+    Player();
     stage.update();
 
 }

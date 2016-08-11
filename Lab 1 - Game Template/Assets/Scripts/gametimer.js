@@ -4,11 +4,11 @@ function resetGameTimer() {
     frameCount = 0;
     gameTimer = 0;
 }
-var myText = new createjs.Text(gameTimer, "12px Arial", "#000000");
+var myText = new createjs.Text("Time: " + gameTimer, "12px Arial", "#000000");
 
 function gameTimerSetup() {
-    myText.x = 100;
-    myText.y = 100;
+    myText.x = 50;
+    myText.y = 125;
 }
 
 function runGameTimer() {

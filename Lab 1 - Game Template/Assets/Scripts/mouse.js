@@ -8,7 +8,7 @@ function mouseInit() {
     });
 
     mouseText = new createjs.Text("x: " + 0 + " y: " + 0, "12px Arial", "#000000");
-    mouseText.x = 100;
+    mouseText.x = 50;
     mouseText.y = 150;
 }
 

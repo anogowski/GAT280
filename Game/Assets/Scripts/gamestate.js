@@ -8,7 +8,8 @@ var container;
 var levelText;
 var score;
 var GameState = Setup;
-
+var speed = 2;
+var isWalkRight = true;
 
 function SwitchState() {
     switch (GameState) {
@@ -53,10 +54,12 @@ function SwitchState() {
         stage.addChild(container);
 
         score = new createjs.Text("Score: " + 100, "15px Arial", "#F00");
-        score.x = 5;
+        score.x = CANVAS_WIDTH / 2 - 50;
         score.y = 5;
         score.visible = false;
         stage.addChild(score);
+        healthbarSetup();
+
         GameState = Title;
         break;
     case Title:
@@ -70,6 +73,26 @@ function SwitchState() {
         runGameTimer();
         myText.text = "Time: " + gameTimer;
         mouseText.text = "x: " + mouseX + " y: " + mouseY;
+
+        if (wDown) {
+            goblin.y -= speed;
+        } else if (sDown) {
+            goblin.y += speed;
+        }
+        if (aDown) {
+            goblin.x -= speed;
+            if (isWalkRight) {
+                goblin.gotoAndPlay("WalkLeft");
+                isWalkRight = false;
+            }
+        } else if (dDown) {
+            goblin.x += speed;
+            if (!isWalkRight) {
+                goblin.gotoAndPlay("WalkRight");
+                isWalkRight = true;
+            }
+        }
+
         if (gameTimer > 10) {
             GameOverStart();
         }
@@ -176,4 +199,5 @@ function GameOverStart() {
     blockArray[0].visible = true;
     blockArray[1].visible = true;
     blockArray[2].visible = true;
+    GameState = GameOver;
 }

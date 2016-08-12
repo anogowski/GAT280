@@ -11,6 +11,10 @@ scriptManifest = [
         id: "preloadAudio"
     },
     {
+        src: "healthbar.js?a=" + cachedVersion,
+        id: "healthbar"
+    },
+    {
         src: "gamestate.js?a=" + cachedVersion,
         id: "gamestate"
     },

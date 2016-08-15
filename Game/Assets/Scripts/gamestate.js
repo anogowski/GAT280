@@ -92,7 +92,7 @@ function SwitchState() {
                 isWalkRight = true;
             }
         }
-
+        testHit();
         if (gameTimer > 10) {
             GameOverStart();
         }

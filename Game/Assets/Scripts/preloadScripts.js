@@ -33,6 +33,14 @@ scriptManifest = [
     {
         src: "mouse.js?a=" + cachedVersion,
         id: "mouse"
+    },
+    {
+        src: "ndgmr.Collision.js?a=" + cachedVersion,
+        id: "ndgmr.Collision"
+    },
+    {
+        src: "collision.js?a=" + cachedVersion,
+        id: "collision"
     }
 ]
 

@@ -1,10 +1,10 @@
 var padX = 10;
 var padY = 75;
-var grassTop = 500;
+var grassTop = 300;
 
 function bounds() {
-    if (goblin.x >= CANVAS_WIDTH - (padX * 3)) {
-        goblin.x = CANVAS_WIDTH - padX;
+    if (goblin.x >= CANVAS_WIDTH - (padX * 5)) {
+        goblin.x = CANVAS_WIDTH - (padX * 5);
     } else if (goblin.x <= 0 + padX) {
         goblin.x = padX;
     }
@@ -14,12 +14,16 @@ function bounds() {
     } else if (goblin.y <= grassTop + padY) {
         goblin.y = grassTop + padY;
     }
-    console.log("x: " + goblin.x + " y: " + goblin.y);
 }
 
 function testHit() {
-    var intersection = ndgmr.checkPixelCollision(goblin, bat, 0, true);
-    if (intersection) {
-        console.log("hit");
+    for (i = 0; i < numBats; ++i) {
+        var intersection = ndgmr.checkPixelCollision(goblin, bats[i], 1, true);
+        if (intersection) {
+            if (attacking) {} else {
+                affectHealth(-10);
+            }
+            bats[i].visible = false;
+        }
     }
 }

@@ -8,8 +8,9 @@ var container;
 var levelText;
 var score;
 var GameState = Setup;
-var speed = 2;
+var speed = 4;
 var isWalkRight = true;
+var attacking = false;
 
 function SwitchState() {
     switch (GameState) {
@@ -59,6 +60,8 @@ function SwitchState() {
         score.visible = false;
         stage.addChild(score);
         healthbarSetup();
+
+        blockArray[3].click("click");
 
         GameState = Title;
         break;

@@ -1,6 +1,8 @@
 var queue;
 var buttons, bat, goblin;
 var blockArray = [];
+var bats = [];
+var numBats = 10;
 var blockArrayLength = 3;
 var titleScreen;
 var backgroundScreen;
@@ -175,12 +177,28 @@ function Enemy() {
     });
 
     bat = new createjs.Sprite(data);
-    bat.x = CANVAS_WIDTH / 2;
-    bat.y = 500;
-    bat.scaleX = 1.5;
-    bat.scaleY = 1.5;
-    bat.gotoAndPlay("Left");
-    stage.addChild(bat);
+    bat.scaleX = 1.25;
+    bat.scaleY = 1.25;
+
+    for (i = 0; i < numBats / 2; ++i) {
+        bat.y = 400 + (i * 30);
+
+        bat.x = CANVAS_WIDTH - 50;
+        bat.gotoAndPlay("Left");
+        bats.push(bat.clone());
+
+        bat.x = padX;
+        bat.gotoAndPlay("Right");
+        bats.push(bat.clone());
+    }
+
+    for (i = 0; i < numBats; ++i) {
+        stage.addChild(bats[i]);
+    }
+}
+
+function createBatArray() {
+
 }
 
 function Player() {

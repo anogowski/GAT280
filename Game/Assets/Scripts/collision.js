@@ -20,7 +20,9 @@ function testHit() {
     for (i = 0; i < numBats; ++i) {
         var intersection = ndgmr.checkPixelCollision(goblin, bats[i], 1, true);
         if (intersection) {
-            if (attacking) {} else {
+            if (attacking) {
+                score += 10;
+            } else {
                 affectHealth(-10);
             }
             bats[i].visible = false;

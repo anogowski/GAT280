@@ -6,7 +6,8 @@ var GameOver = "GameOver";
 var Instuctions = "Instructions";
 var container;
 var levelText;
-var score;
+var scoreText;
+var score = 0;
 var GameState = Setup;
 var speed = 4;
 var isWalkRight = true;
@@ -54,14 +55,12 @@ function SwitchState() {
         container.visible = false;
         stage.addChild(container);
 
-        score = new createjs.Text("Score: " + 100, "15px Arial", "#F00");
-        score.x = CANVAS_WIDTH / 2 - 50;
-        score.y = 5;
-        score.visible = false;
-        stage.addChild(score);
+        scoreText = new createjs.Text("Score: " + score, "15px Arial", "#F00");
+        scoreText.x = CANVAS_WIDTH / 2 - 50;
+        scoreText.y = 5;
+        scoreText.visible = false;
+        stage.addChild(scoreText);
         healthbarSetup();
-
-        blockArray[3].click("click");
 
         GameState = Title;
         break;
@@ -75,8 +74,7 @@ function SwitchState() {
     case Play:
         runGameTimer();
         myText.text = "Time: " + gameTimer;
-        mouseText.text = "x: " + mouseX + " y: " + mouseY;
-
+        scoreText.text = "Score: " + score;
         if (wDown) {
             goblin.y -= speed;
         } else if (sDown) {
@@ -115,7 +113,7 @@ function tweenComplete(tween) {
     myText.visible = true;
     mouseText.visible = true;
     container.visible = false;
-    score.visible = true;
+    scoreText.visible = true;
 
     GameState = Play;
 }
@@ -148,7 +146,7 @@ function MainMenu() {
     backgroundScreen.visible = false;
     gameoverScreen.visible = false;
     instructionScreen.visible = false;
-    score.visible = false;
+    scoreText.visible = false;
     myText.visible = false;
     mouseText.visible = false;
     resetGameTimer()
@@ -165,7 +163,7 @@ function TitleEnd() {
     container.visible = false;
     backgroundScreen.visible = true;
     gameoverScreen.visible = false;
-    score.visible = false;
+    scoreText.visible = false;
     myText.visible = false;
     mouseText.visible = false;
     tweenObj();
@@ -181,7 +179,7 @@ function InstructionsStart() {
     container.visible = false;
     backgroundScreen.visible = true;
     gameoverScreen.visible = false;
-    score.visible = false;
+    scoreText.visible = false;
     myText.visible = false;
     mouseText.visible = false;
     resetGameTimer();
@@ -196,7 +194,7 @@ function GameOverStart() {
     backgroundScreen.visible = false;
     gameoverScreen.visible = true;
     instructionScreen.visible = false;
-    score.visible = true;
+    scoreText.visible = true;
     myText.visible = false;
     mouseText.visible = false;
     resetGameTimer();

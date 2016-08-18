@@ -28,14 +28,12 @@ function handleKeyDown(evt) {
     case KEYCODE_LEFT:
         if (!leftDown) {
             goblin.gotoAndPlay("AttackLeft");
-            attacking = true;
             leftDown = !leftDown;
         }
         return false;
     case KEYCODE_RIGHT:
         if (!rightDown) {
             goblin.gotoAndPlay("AttackRight");
-            attacking = true;
             rightDown = !rightDown;
         }
         return false;
@@ -97,13 +95,11 @@ function handleKeyUp(evt) {
     switch (evt.keyCode) {
     case KEYCODE_LEFT:
         if (leftDown) {
-            attacking = false;
             leftDown = !leftDown;
         }
         break;
     case KEYCODE_RIGHT:
         if (rightDown) {
-            attacking = false;
             rightDown = !rightDown;
         }
         break;

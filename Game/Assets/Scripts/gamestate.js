@@ -93,6 +93,7 @@ function SwitchState() {
                 isWalkRight = true;
             }
         }
+        isAttacking();
         checkVisibleEnemies();
         spawnEnemies();
         bounds();
@@ -252,4 +253,8 @@ function spawnEnemies() {
         temp = enemiesToBeVisible.pop();
         bats[temp].visible = true;
     }
+}
+
+function isAttacking() {
+    attacking = goblin.currentAnimation == "AttackRight" || goblin.currentAnimation == "AttackLeft";
 }

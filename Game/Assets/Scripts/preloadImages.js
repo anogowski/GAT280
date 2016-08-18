@@ -89,8 +89,8 @@ function addBackGroundToStage() {
     levelFrame.y = menuY;
     levelFrame.visible = false;
 
-    stage.addChild(myText);
-    myText.visible = false;
+    stage.addChild(timerText);
+    timerText.visible = false;
 
 }
 
@@ -125,7 +125,7 @@ function addButtonsToStage() {
     buttons.y = (CANVAS_HEIGHT * 0.5);
 
     for (i = 0; i < blockArrayLength; i++) {
-        buttons.x = (CANVAS_WIDTH * 0.5) - 20;
+        buttons.x = (CANVAS_WIDTH * 0.5) - 30;
         buttons.y = (CANVAS_HEIGHT * 0.5) + i * 50;
         buttons.gotoAndStop(i * 3);
         blockArray.push(buttons.clone());
@@ -155,6 +155,10 @@ function Enemy() {
             height: 32
         },
         animations: {
+            "Forward": {
+                frames: [1, 2, 3],
+                speed: 0.15
+            },
             "Right": {
                 frames: [5, 6, 7],
                 speed: 0.25
@@ -177,7 +181,7 @@ function Enemy() {
     bat = new createjs.Sprite(data);
     bat.scaleX = 1.25;
     bat.scaleY = 1.25;
-
+    bat.dirX = 1;
     if (numBats % 2 != 0) {
         ++numBats;
     }
@@ -187,10 +191,12 @@ function Enemy() {
 
         bat.x = CANVAS_WIDTH - 50;
         bat.gotoAndPlay("Left");
+        bat.originX = CANVAS_WIDTH - 50;
         bats.push(bat.clone());
 
         bat.x = padX;
         bat.gotoAndPlay("Right");
+        bat.originX = padX;
         bats.push(bat.clone());
     }
 
@@ -198,10 +204,6 @@ function Enemy() {
         stage.addChild(bats[i]);
         bats[i].visible = false;
     }
-}
-
-function createBatArray() {
-
 }
 
 function Player() {

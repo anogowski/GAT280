@@ -27,6 +27,7 @@ function testHit() {
                     affectHealth(-10);
                 }
                 bats[i].visible = false;
+                //bats[i].x = bats[i].originX;
             }
         }
     }

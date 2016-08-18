@@ -181,7 +181,6 @@ function Enemy() {
     bat = new createjs.Sprite(data);
     bat.scaleX = 1.25;
     bat.scaleY = 1.25;
-    bat.dirX = 1;
     if (numBats % 2 != 0) {
         ++numBats;
     }
@@ -191,12 +190,12 @@ function Enemy() {
 
         bat.x = CANVAS_WIDTH - 50;
         bat.gotoAndPlay("Left");
-        bat.originX = CANVAS_WIDTH - 50;
+        //bat.originX = CANVAS_WIDTH - 50;
         bats.push(bat.clone());
 
         bat.x = padX;
         bat.gotoAndPlay("Right");
-        bat.originX = padX;
+        //bat.originX = padX;
         bats.push(bat.clone());
     }
 

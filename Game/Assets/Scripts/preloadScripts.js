@@ -31,16 +31,16 @@ scriptManifest = [
         id: "keyboard"
     },
     {
-        src: "mouse.js?a=" + cachedVersion,
-        id: "mouse"
-    },
-    {
         src: "ndgmr.Collision.js?a=" + cachedVersion,
         id: "ndgmr.Collision"
     },
     {
         src: "collision.js?a=" + cachedVersion,
         id: "collision"
+    },
+    {
+        src: "helper.js?a=" + cachedVersion,
+        id: "helper"
     }
 ]
 

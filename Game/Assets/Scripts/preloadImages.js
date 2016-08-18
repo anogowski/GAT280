@@ -83,8 +83,8 @@ function addBackGroundToStage() {
     gameoverScreen.visible = false;
 
     stage.addChild(levelFrame);
-    menuX = (CANVAS_WIDTH / 2);
-    menuY = (CANVAS_HEIGHT / 2);
+    menuX = (CANVAS_WIDTH * 0.5);
+    menuY = (CANVAS_HEIGHT * 0.5);
     levelFrame.x = menuX;
     levelFrame.y = menuY;
     levelFrame.visible = false;
@@ -92,8 +92,6 @@ function addBackGroundToStage() {
     stage.addChild(myText);
     myText.visible = false;
 
-    stage.addChild(mouseText);
-    mouseText.visible = false;
 }
 
 
@@ -123,12 +121,12 @@ function addButtonsToStage() {
         }
     });
     buttons = new createjs.Sprite(buttonSheet);
-    buttons.x = CANVAS_WIDTH / 2 - 25;
-    buttons.y = CANVAS_HEIGHT / 2;
+    buttons.x = (CANVAS_WIDTH * 0.5) - 25;
+    buttons.y = (CANVAS_HEIGHT * 0.5);
 
     for (i = 0; i < blockArrayLength; i++) {
-        buttons.x = CANVAS_WIDTH / 2 - 20;
-        buttons.y = CANVAS_HEIGHT / 2 + i * 50;
+        buttons.x = (CANVAS_WIDTH * 0.5) - 20;
+        buttons.y = (CANVAS_HEIGHT * 0.5) + i * 50;
         buttons.gotoAndStop(i * 3);
         blockArray.push(buttons.clone());
     }
@@ -180,6 +178,10 @@ function Enemy() {
     bat.scaleX = 1.25;
     bat.scaleY = 1.25;
 
+    if (numBats % 2 != 0) {
+        ++numBats;
+    }
+
     for (i = 0; i < numBats / 2; ++i) {
         bat.y = 400 + (i * 30);
 
@@ -194,6 +196,7 @@ function Enemy() {
 
     for (i = 0; i < numBats; ++i) {
         stage.addChild(bats[i]);
+        bats[i].visible = false;
     }
 }
 
@@ -233,8 +236,9 @@ function Player() {
     });
 
     goblin = new createjs.Sprite(data);
-    goblin.x = 250;
+    goblin.x = CANVAS_WIDTH * 0.5 - 25;
     goblin.y = 500;
     goblin.gotoAndPlay("WalkRight");
     stage.addChild(goblin);
+    goblin.visible = false;
 }

@@ -50,13 +50,13 @@ function SwitchState() {
         levelFrame.y = 0;
         levelFrame.visible = true;
         container.addChild(levelFrame, levelText);
-        container.x = CANVAS_WIDTH / 2 - 100;
-        container.y = CANVAS_HEIGHT / 2;
+        container.x = (CANVAS_WIDTH * 0.5) - 100;
+        container.y = (CANVAS_HEIGHT * 0.5);
         container.visible = false;
         stage.addChild(container);
 
         scoreText = new createjs.Text("Score: " + score, "15px Arial", "#F00");
-        scoreText.x = CANVAS_WIDTH / 2 - 50;
+        scoreText.x = (CANVAS_WIDTH * 0.5) - 50;
         scoreText.y = 5;
         scoreText.visible = false;
         stage.addChild(scoreText);
@@ -93,9 +93,11 @@ function SwitchState() {
                 isWalkRight = true;
             }
         }
+        checkVisibleEnemies();
+        spawnEnemies();
         bounds();
         testHit();
-        if (gameTimer > 10) {
+        if (health <= 0) {
             GameOverStart();
         }
         break;
@@ -111,10 +113,12 @@ var myTween;
 function tweenComplete(tween) {
     console.log("Tween Complete!");
     myText.visible = true;
-    mouseText.visible = true;
     container.visible = false;
     scoreText.visible = true;
+    heathbarContainer.visible = true;
+    goblin.visible = true;
 
+    resetGame();
     GameState = Play;
 }
 
@@ -127,8 +131,8 @@ function tweenObj() {
         })
         .wait(500)
         .to({
-            x: CANVAS_WIDTH / 2 - 100,
-            y: CANVAS_HEIGHT / 2 - 75,
+            x: (CANVAS_WIDTH * 0.5) - 100,
+            y: (CANVAS_HEIGHT * 0.5) - 75,
             rotation: 0
         }, 1500, createjs.Ease.bounceOut)
         .wait(2000)
@@ -148,11 +152,12 @@ function MainMenu() {
     instructionScreen.visible = false;
     scoreText.visible = false;
     myText.visible = false;
-    mouseText.visible = false;
     resetGameTimer()
     blockArray[0].visible = true;
     blockArray[1].visible = true;
     blockArray[2].visible = false;
+    heathbarContainer.visible = false;
+    goblin.visible = false;
 
     GameState = Title;
 }
@@ -165,11 +170,11 @@ function TitleEnd() {
     gameoverScreen.visible = false;
     scoreText.visible = false;
     myText.visible = false;
-    mouseText.visible = false;
     tweenObj();
     blockArray[0].visible = false;
     blockArray[1].visible = false;
     blockArray[2].visible = true;
+    heathbarContainer.visible = false;
     GameState = Menu;
 }
 
@@ -181,11 +186,12 @@ function InstructionsStart() {
     gameoverScreen.visible = false;
     scoreText.visible = false;
     myText.visible = false;
-    mouseText.visible = false;
     resetGameTimer();
     blockArray[0].visible = true;
     blockArray[1].visible = false;
     blockArray[2].visible = true;
+    heathbarContainer.visible = false;
+    goblin.visible = false;
 }
 
 function GameOverStart() {
@@ -196,10 +202,54 @@ function GameOverStart() {
     instructionScreen.visible = false;
     scoreText.visible = true;
     myText.visible = false;
-    mouseText.visible = false;
     resetGameTimer();
     blockArray[0].visible = true;
     blockArray[1].visible = true;
     blockArray[2].visible = true;
+    heathbarContainer.visible = false;
+    goblin.visible = false;
+
+    for (i = 0; i < numBats; ++i) {
+        bats[i].visible = false;
+    }
+
     GameState = GameOver;
+}
+
+
+function resetGame() {
+    resetHealth();
+    score = 0;
+    goblin.x = CANVAS_WIDTH * 0.5 - 25;
+    goblin.y = 500;
+}
+
+var numVisibleEnemies = 3;
+var currentVisibleEnemies = 0;
+var enemiesToBeVisible = [];
+
+function checkVisibleEnemies() {
+    currentVisibleEnemies = 0;
+    for (i = 0; i < numBats; ++i) {
+        if (bats[i].visible) {
+            ++currentVisibleEnemies;
+        }
+    }
+}
+
+function spawnEnemies() {
+    while (currentVisibleEnemies < numVisibleEnemies) {
+        temp = getRandomInt(0, numBats - 1);
+        if (!(bats[temp].visible)) {
+
+            enemiesToBeVisible.push(temp);
+            ++currentVisibleEnemies;
+            console.log("currentVisibleEnemies");
+        }
+    }
+
+    while (enemiesToBeVisible.length > 0) {
+        temp = enemiesToBeVisible.pop();
+        bats[temp].visible = true;
+    }
 }

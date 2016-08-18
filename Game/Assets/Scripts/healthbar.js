@@ -15,6 +15,12 @@ function healthbarSetup() {
     heathbarContainer.x = 5;
     heathbarContainer.y = 5;
     stage.addChild(heathbarContainer);
+    heathbarContainer.visible = false;
+}
+
+function resetHealth() {
+    health = MAX_HEALTH;
+    healthbar.scaleX = health / MAX_HEALTH;
 }
 
 function affectHealth(amount) {

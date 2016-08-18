@@ -7,6 +7,7 @@ var KEYCODE_A = 65;
 var KEYCODE_S = 83;
 var KEYCODE_D = 68;
 var KEYCODE_SPACE = 32;
+var KEYCODE_J = 74;
 
 var leftDown = false;
 var upDown = false;
@@ -17,6 +18,7 @@ var aDown = false;
 var sDown = false;
 var dDown = false;
 var spaceDown = false;
+var jDown = false;
 
 function handleKeyDown(evt) {
     if (!evt) {
@@ -79,6 +81,12 @@ function handleKeyDown(evt) {
             spaceDown = !spaceDown;
         }
         return false;
+    case KEYCODE_J:
+        if (!jDown) {
+            resetHealth();
+            jDown = !jDown;
+        }
+        return false;
     }
 }
 
@@ -139,6 +147,12 @@ function handleKeyUp(evt) {
         if (spaceDown) {
 
             spaceDown = !spaceDown;
+        }
+        break;
+    case KEYCODE_J:
+        if (jDown) {
+
+            jDown = !jDown;
         }
         break;
     }

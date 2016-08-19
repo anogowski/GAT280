@@ -190,13 +190,15 @@ function Enemy() {
 
         bat.x = CANVAS_WIDTH - 50;
         bat.gotoAndPlay("Left");
-        //bat.originX = CANVAS_WIDTH - 50;
+        bat.originX = CANVAS_WIDTH - 50;
         bats.push(bat.clone());
 
         bat.x = padX;
         bat.gotoAndPlay("Right");
-        //bat.originX = padX;
+        bat.originX = padX;
+        console.log(bat.originX)
         bats.push(bat.clone());
+        //bats[i].originX = 
     }
 
     for (i = 0; i < numBats; ++i) {

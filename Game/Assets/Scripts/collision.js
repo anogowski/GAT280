@@ -23,6 +23,7 @@ function testHit() {
             if (intersection) {
                 if (attacking) {
                     score += 10;
+                    setVisibleEnemies();
                 } else {
                     affectHealth(-10);
                 }

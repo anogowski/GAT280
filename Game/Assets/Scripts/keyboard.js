@@ -99,7 +99,6 @@ function handleKeyDown(evt) {
                 batMaxSpeed = 6;
             }
             hDown = !hDown;
-            console.log(batMaxSpeed);
         }
         return false;
     }

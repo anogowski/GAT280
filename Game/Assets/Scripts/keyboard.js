@@ -84,7 +84,7 @@ function handleKeyDown(evt) {
     case KEYCODE_J:
         if (!jDown) {
             resetHealth();
-            batMaxSpeed--;
+            --batMaxSpeed;
             if (batMaxSpeed <= 0) {
                 batMaxSpeed = 1;
             }
@@ -93,11 +93,13 @@ function handleKeyDown(evt) {
         return false;
     case KEYCODE_H:
         if (!hDown) {
-            batMaxSpeed++;
+            ++batMaxSpeed;
+            ++batSpeed;
             if (batMaxSpeed > 6) {
                 batMaxSpeed = 6;
             }
             hDown = !hDown;
+            console.log(batMaxSpeed);
         }
         return false;
     }
@@ -165,14 +167,15 @@ function handleKeyUp(evt) {
             jDown = !jDown;
         }
         break;
+    case KEYCODE_H:
+        if (hDown) {
+            hDown = !hDown;
+        }
+        break;
     }
-case KEYCODE_H:
-    if (hDown) {
-        hDown = !hDown;
-    }
-    break;
+
 }
-}
+
 
 
 document.onkeydown = handleKeyDown;

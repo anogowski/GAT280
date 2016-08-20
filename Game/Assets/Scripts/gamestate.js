@@ -44,12 +44,19 @@ function SwitchState() {
             }
         });
 
-        instruct = "\t\t\t\t\t\t\t\t\t\t\t\t\tWASD to move\n\nLeft Arrow or Right Arrow to attack";
+        instruct = "WASD to move\n\nLeft Arrow or Right Arrow to attack" +
+            "\n\nJ Decrease Bat Speed\nH Increase Bat Speed";
         InstructionsText = new createjs.Text(instruct, "20px Arial", "#000");
-        InstructionsText.x = (CANVAS_WIDTH * 0.5) - 125;
+        InstructionsText.x = 50;
         InstructionsText.y = 150;
         stage.addChild(InstructionsText);
         InstructionsText.visible = false;
+
+        Credits = new createjs.Text("Designer/Developer: Adam Nogowski\nSprites from http://opengameart.org/", "20px Arial", "#FFF");
+        Credits.x = 250;
+        Credits.y = CANVAS_HEIGHT - 100;
+        stage.addChild(Credits);
+        Credits.visible = false;
 
         container = new createjs.Container();
         levelText = new createjs.Text(1, "15px Arial", "#FFF");
@@ -177,6 +184,8 @@ function MainMenu() {
     blockArray[2].visible = false;
     heathbarContainer.visible = false;
     InstructionsText.visible = false;
+    Credits.visible = false;
+
     GameState = Title;
 }
 
@@ -197,6 +206,8 @@ function TitleEnd() {
     InstructionsText.visible = false;
     scoreText.font = "20px Arial";
     scoreText.y = 5;
+    Credits.visible = false;
+
     GameState = Menu;
 }
 
@@ -211,6 +222,8 @@ function InstructionsStart() {
     blockArray[1].visible = false;
     blockArray[2].visible = true;
     InstructionsText.visible = true;
+    Credits.visible = false;
+
 }
 
 function GameOverStart() {
@@ -226,6 +239,7 @@ function GameOverStart() {
     scoreText.x = (CANVAS_WIDTH * 0.5) - 50;
     scoreText.y = 150;
     scoreText.font = "30px Arial";
+    Credits.visible = true;
     GameState = GameOver;
 }
 

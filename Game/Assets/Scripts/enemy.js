@@ -1,23 +1,19 @@
 var numVisibleEnemies = 3;
 var currentVisibleEnemies = 0;
 var enemiesToBeVisible = [];
-var batStartSpeed = 3;
-var batSpeed = 3;
+var batSpeed = 1;
 var batMaxSpeed = 6;
-var scoreToIncrease = 50;
+var scoreToIncrease = 25;
+var deathCount = 0;
+var deathMod = 5;
 
 function setVisibleEnemies() {
-    if (score > scoreToIncrease) {
-        numVisibleEnemies = score / scoreToIncrease;
-        batSpeed = batStartSpeed + score / scoreToIncrease;
-    } else {
-        numVisibleEnemies = 3;
+    if (deathCount % deathMod === 0) {
+        ++batSpeed;
+        ++numVisibleEnemies;
     }
     if (numVisibleEnemies > numBats) {
         numVisibleEnemies = numBats;
-    }
-    if (batSpeed > batMaxSpeed) {
-        batSpeed = batMaxSpeed;
     }
 }
 
@@ -48,6 +44,10 @@ function spawnEnemies() {
 }
 
 function moveBats() {
+    if (batSpeed > batMaxSpeed) {
+        batSpeed = batMaxSpeed;
+    }
+
     for (i = 0; i < numBats; ++i) {
         if (bats[i].visible) {
             bats[i].x += bats[i].dirX * batSpeed;

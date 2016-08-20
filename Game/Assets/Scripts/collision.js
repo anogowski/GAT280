@@ -27,7 +27,8 @@ function testHit() {
                 var facing = ((facingRight && bats[i].dirX === -1) || (facingLeft && bats[i].dirX === 1))
 
                 if (attacking && facing) {
-                    score += 10;
+                    score += 2 * batSpeed;
+                    ++deathCount;
                     setVisibleEnemies();
                 } else {
                     affectHealth(-10);

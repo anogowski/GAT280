@@ -188,17 +188,22 @@ function Enemy() {
     for (i = 0; i < numBats / 2; ++i) {
         bat.y = 400 + (i * 30);
 
-        bat.x = CANVAS_WIDTH - 50;
+        bat.x = CANVAS_WIDTH - padX * 5;
         bat.gotoAndPlay("Left");
-        bat.originX = CANVAS_WIDTH - 50;
-        bats.push(bat.clone());
+        var temp = bat.clone()
+        temp.originX = CANVAS_WIDTH - padX * 5;
+        temp.dirX = -1;
+        temp.boundX = 0 - padX;
+        bats.push(temp);
 
         bat.x = padX;
         bat.gotoAndPlay("Right");
-        bat.originX = padX;
-        console.log(bat.originX)
-        bats.push(bat.clone());
-        //bats[i].originX = 
+
+        var temp2 = bat.clone()
+        temp2.originX = padX;
+        temp2.dirX = 1;
+        temp2.boundX = CANVAS_WIDTH;
+        bats.push(temp2);
     }
 
     for (i = 0; i < numBats; ++i) {

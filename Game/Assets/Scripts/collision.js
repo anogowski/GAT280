@@ -21,14 +21,19 @@ function testHit() {
         if (bats[i].visible) {
             var intersection = ndgmr.checkPixelCollision(goblin, bats[i], 1, true);
             if (intersection) {
-                if (attacking) {
+                var facingRight = goblin.currentAnimation == "AttackRight";
+                var facingLeft = goblin.currentAnimation == "AttackLeft";
+
+                var facing = ((facingRight && bats[i].dirX === -1) || (facingLeft && bats[i].dirX === 1))
+
+                if (attacking && facing) {
                     score += 10;
                     setVisibleEnemies();
                 } else {
                     affectHealth(-10);
                 }
                 bats[i].visible = false;
-                //bats[i].x = bats[i].originX;
+                bats[i].x = bats[i].originX;
             }
         }
     }

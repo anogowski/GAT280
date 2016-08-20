@@ -33,7 +33,6 @@ function spawnEnemies() {
 
             enemiesToBeVisible.push(temp);
             ++currentVisibleEnemies;
-            console.log("currentVisibleEnemies");
         }
     }
 

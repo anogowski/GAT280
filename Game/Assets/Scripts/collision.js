@@ -30,8 +30,10 @@ function testHit() {
                     score += 2 * batSpeed;
                     ++deathCount;
                     setVisibleEnemies();
+                    enemyHurt.play();
                 } else {
                     affectHealth(-10);
+                    playerHurt.play();
                 }
                 bats[i].visible = false;
                 bats[i].x = bats[i].originX;

@@ -52,9 +52,9 @@ function SwitchState() {
         stage.addChild(InstructionsText);
         InstructionsText.visible = false;
 
-        Credits = new createjs.Text("Designer/Developer: Adam Nogowski\nSprites from http://opengameart.org/", "20px Arial", "#FFF");
+        Credits = new createjs.Text("Designer/Developer: Adam Nogowski\n\n" + "Sprites: http://opengameart.org/\n" + "Sound Effects: https://www.freesound.org/\n" + "BGM: http://incompetech.com/", "20px Arial", "#FFF");
         Credits.x = 250;
-        Credits.y = CANVAS_HEIGHT - 100;
+        Credits.y = CANVAS_HEIGHT - 125;
         stage.addChild(Credits);
         Credits.visible = false;
 
